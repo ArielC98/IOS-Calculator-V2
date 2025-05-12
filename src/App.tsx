@@ -1,23 +1,17 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
 
 import {
   StatusBar,
-  Text,
   View,
 } from 'react-native';
 import { CalculatorScreen } from './screens/CalculatorScreen';
+import { styles } from './presentation/theme/app-theme';
 
 
 
 function App() {
 
   return (
-    <View>
+    <View style = {styles.backGround}>
       <StatusBar
         barStyle={'light-content'}
         backgroundColor={'black'}
