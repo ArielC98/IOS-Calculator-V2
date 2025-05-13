@@ -1,5 +1,6 @@
 import { Pressable, Text, View } from "react-native"
-import { styles } from "../presentation/theme/app-theme"
+import { colors, styles } from "../presentation/theme/app-theme"
+import { CalculatorButton } from '../presentation/components/CalculatorButton';
 
 
 export const CalculatorScreen = () => {
@@ -10,20 +11,12 @@ export const CalculatorScreen = () => {
         <Text style={styles.subResult}>15</Text>
       </View>
 
-      <View style = {styles.row}>
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonText}>1</Text>
-        </Pressable>
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonText}>1</Text>
-        </Pressable>
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonText}>1</Text>
-        </Pressable>
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonText}>1</Text>
-        </Pressable>
-        
+      <View style={styles.row}>
+        <CalculatorButton label="C" color={colors.lightGray} />
+        <CalculatorButton label="+/-" color={colors.lightGray} />
+        <CalculatorButton label="del" color={colors.lightGray} />
+        <CalculatorButton label="÷" color={colors.orange} />
+
       </View>
 
     </View>
