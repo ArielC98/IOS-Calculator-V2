@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export const colors = {
-  dargGray: '#2D2D2D',
+  darkGray: '#2D2D2D',
   lightGray: '#9B9B9B',
   orange: '#FF9427',
 
