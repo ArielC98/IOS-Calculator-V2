@@ -1,10 +1,20 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 
+enum Operator {
+  add,
+  subsctract,
+  multiply,
+  divide
+}
 
 export const useCalculator = () => {
   
   const [number, setNumber] = useState('0')
+  const [prevNumber, setPrevNumber] = useState('0')
+  
+  const lastOperation = useRef<Operator>(null);
 
+  //Concatenates the numbers of the buttons
   const buildNumber = (numberString: string) => {
 
     if(number.includes('.') && numberString === '.') return;
@@ -41,10 +51,75 @@ export const useCalculator = () => {
 
   }
 
+  //Delete the last number
+  const delNumber = () => {
+    if((number.length === 2 && number.includes("-")) || (number.length === 1)){
+      setNumber('0')
+    }
+    else{
+      setNumber(number.slice(0,-1))
+    }
+  }
+
+  //Clean Values
+  const clearNumber = () => {
+    setNumber('0'),
+    setPrevNumber('0')
+  }
+
+
+  //Toggle the sign
+  const toggleSign = () => {
+    if(number.includes('-')){
+      return setNumber(number.replace('-',''))
+    }
+
+    setNumber('-' + number);
+  }
+
+  const setLastNumber = () => {
+    if(number.endsWith('.')){
+      setPrevNumber(number.slice(0,-1));
+    }
+    else{
+      setPrevNumber(number);
+    }
+
+    setNumber('0');
+  }
+
+  const divideOperation = () => {
+    setLastNumber();
+    lastOperation.current = Operator.divide
+  }
+  
+  const multiplyOperation = () => {
+    setLastNumber();
+    lastOperation.current = Operator.multiply
+  }
+  const substractOperation = () => {
+    setLastNumber();
+    lastOperation.current = Operator.subsctract
+  }
+  const addOperation = () => {
+    setLastNumber();
+    lastOperation.current = Operator.add
+  }
+
+
   return {
     //Properties
     number,
     //Methods
-    buildNumber
+    buildNumber,
+    toggleSign,
+    delNumber,
+    clearNumber,
+    setNumber,
+    prevNumber,
+    divideOperation,
+    multiplyOperation,
+    substractOperation,
+    addOperation
   }
 }
