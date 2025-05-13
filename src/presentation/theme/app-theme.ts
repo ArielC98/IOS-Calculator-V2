@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
   button: {
     height: 80,
     width: 80,
-    backgroundColor: colors.dargGray,
+    backgroundColor: colors.darkGray,
     borderRadius: 100,
     justifyContent: 'center',
     marginHorizontal: 10
