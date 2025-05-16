@@ -17,7 +17,8 @@ export const CalculatorScreen = () => {
     divideOperation,
     multiplyOperation,
     substractOperation,
-    addOperation
+    addOperation,
+    calculateResult
   } = useCalculator();
 
   return (
@@ -29,11 +30,11 @@ export const CalculatorScreen = () => {
           numberOfLines={1}
         >{number}</Text>
 
-        <Text 
+        <Text
           adjustsFontSizeToFit
           numberOfLines={1}
           style={styles.subResult}
-          >{prevNumber === '0' ? '' : prevNumber}</Text>
+        >{prevNumber === '0' ? '' : prevNumber}</Text>
       </View>
 
       <View style={styles.row}>
@@ -82,8 +83,8 @@ export const CalculatorScreen = () => {
         } label="0" doubleSize />
         <CalculatorButton onPress={() => buildNumber(".")
         } label="." />
-        <CalculatorButton onPress={() => console.log("=")
-        } label="=" color={colors.orange} />
+        <CalculatorButton onPress={calculateResult}
+          label="=" color={colors.orange} />
 
       </View>
 
